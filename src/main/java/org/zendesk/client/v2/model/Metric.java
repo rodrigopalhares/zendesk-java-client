@@ -264,7 +264,7 @@ public class Metric {
                 '}';
     }
 
-    protected class ZendeskComboMinutes {
+    public class ZendeskComboMinutes {
 
         @JsonProperty("calendar")
         protected Long calendarMinutes;
