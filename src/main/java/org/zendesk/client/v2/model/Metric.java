@@ -11,40 +11,67 @@ public class Metric {
 
     @JsonProperty("id")
     protected Long id;
+    
     @JsonProperty("ticket_id")
     protected Long ticketId;
+    
     @JsonProperty("group_stations")
     protected Long groupStations;
+    
     @JsonProperty("assignee_stations")
     protected Long assigneeStations;
+    
     @JsonProperty("reopens")
     protected Long reopens;
+    
     @JsonProperty("replies")
     protected Long replies;
+    
     @JsonProperty("assignee_updated_at")
     protected Date assigneeUpdatedAt;
+    
     @JsonProperty("requester_updated_at")
     protected Date requesterUpdatedAt;
+    
     @JsonProperty("status_updated_at")
     protected Date lastUpdatedAt;
+    
     @JsonProperty("initially_assigned_at")
     protected Date initiallyUpdatedAt;
+    
     @JsonProperty("assigned_at")
     protected Date assignedAt;
+    
     @JsonProperty("solved_at")
     protected Date solvedAt;
+    
+    @JsonProperty("latest_comment_added_at")
     protected Date lastCommentAddedAt;
-    @JsonProperty("first_resolution_time_in_minutes")
+    
+    @JsonProperty("reply_time_in_minutes")
     protected ZendeskComboMinutes replyTimeMinutes;
+    
+    @JsonProperty("first_resolution_time_in_minutes")
+    protected ZendeskComboMinutes firstResolutionTimeMinutes;
+    
     @JsonProperty("full_resolution_time_in_minutes")
     protected ZendeskComboMinutes fullResolutionTimeMinutes;
+    
     @JsonProperty("agent_wait_time_in_minutes")
     protected ZendeskComboMinutes agentWaitTimeMinutes;
+    
     @JsonProperty("requester_wait_time_in_minutes")
     protected ZendeskComboMinutes requesterWaitTimeMinutes;
+    
+    @JsonProperty("on_hold_time_in_minutes")
+    protected ZendeskComboMinutes onHoldTimeMinutes;
+    
     @JsonProperty("created_at")
     protected Date createdAt;
 
+    @JsonProperty("updated_at")
+    protected Date updatedAt;
+    
     public Long getId() {
         return id;
     }
@@ -77,6 +104,14 @@ public class Metric {
         this.createdAt = createdAt;
     }
 
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+    
     public Long getGroupStations() {
         return groupStations;
     }
@@ -160,7 +195,15 @@ public class Metric {
     public ZendeskComboMinutes getReplyTimeMinutes() {
         return replyTimeMinutes;
     }
+    
+    public ZendeskComboMinutes getFirstResolutionTimeMinutes() {
+		return firstResolutionTimeMinutes;
+	}
 
+	public void setFirstResolutionTimeMinutes(ZendeskComboMinutes firstResolutionTimeMinutes) {
+		this.firstResolutionTimeMinutes = firstResolutionTimeMinutes;
+	}
+    
     public void setReplyTimeMinutes(ZendeskComboMinutes replyTimeMinutes) {
         this.replyTimeMinutes = replyTimeMinutes;
     }
@@ -188,6 +231,14 @@ public class Metric {
     public void setRequesterWaitTimeMinutes(ZendeskComboMinutes requesterWaitTimeMinutes) {
         this.requesterWaitTimeMinutes = requesterWaitTimeMinutes;
     }
+    
+    public ZendeskComboMinutes getOnHoldTimeMinutes() {
+		return onHoldTimeMinutes;
+	}
+
+	public void setOnHoldTimeMinutes(ZendeskComboMinutes onHoldTimeMinutes) {
+		this.onHoldTimeMinutes = onHoldTimeMinutes;
+	}
 
     @Override
     public String toString() {
@@ -238,5 +289,4 @@ public class Metric {
             this.businessMinutes = businessMinutes;
         }
     }
-
 }
