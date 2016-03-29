@@ -23,6 +23,7 @@ public class User extends Collaborator implements SearchResultEntity {
     private Boolean verified;
     private Boolean shared;
     private Long localeId;
+    private String locale;
     private String timeZone;
     private Date lastLoginAt;
     private String phone;
@@ -159,6 +160,15 @@ public class User extends Collaborator implements SearchResultEntity {
 
     public void setLocaleId(Long localeId) {
         this.localeId = localeId;
+    }
+
+    @JsonProperty("locale")
+    public String getLocale() {
+      return locale;
+    }
+
+    public void setLocale(String locale) {
+      this.locale = locale;
     }
 
     public Boolean getModerator() {
