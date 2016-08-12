@@ -2,6 +2,7 @@ package org.zendesk.client.v2.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.zendesk.client.v2.model.events.AgentMacroReferenceEvent;
@@ -9,6 +10,7 @@ import org.zendesk.client.v2.model.events.AttachmentRedactionEvent;
 import org.zendesk.client.v2.model.events.CommentRedactionEvent;
 import org.zendesk.client.v2.model.events.Event;
 import org.zendesk.client.v2.model.events.OrganizationActivityEvent;
+import org.zendesk.client.v2.model.events.UnknownEvent;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -73,5 +75,15 @@ public class EventTest {
         assertEquals(new Long(123L), ((AgentMacroReferenceEvent) ev).getMacroId());
         assertEquals("TheMacroTitle", ((AgentMacroReferenceEvent) ev).getMacroTitle());
         assertNotNull(((AgentMacroReferenceEvent) ev).getVia());
+    }
+
+    @Test
+    public void testUnknownEvent() {
+        String json = "{ \"id\": 123, \"type\": \"NotARealEventType\" }";
+        Event ev = parseJson(json.getBytes());
+        assertNotNull(ev);
+        assertEquals(UnknownEvent.class, ev.getClass());
+        assertEquals("NotARealEventType", ((UnknownEvent) ev).getType());
+        assertTrue(ev.toString().contains("NotARealEventType"));
     }
 }
